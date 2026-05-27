@@ -1,0 +1,11 @@
+dataset:
+  name: StanFu/Hide-and-Seek-v1
+  train_split: train
+  validation_split: validation
+  test_split: test
+  expected_split_sizes:
+    train: 777169
+    validation: 221195
+    test: 121752
+  window_length: 100
+  stride: 40
