@@ -115,19 +115,6 @@ object_cross_entropy + 0.5 * weight_cross_entropy
 
 Metrics are object accuracy, weight accuracy, and joint accuracy.
 
-## Repository Layout
-
-```text
-configs/      Baseline and dataset configs
-data/         Label mapping and optional normalization stats
-docs/         Dataset schema and repository audit notes
-has_dataset/  Hugging Face loading, windowing, transforms, collate
-models/       Point cloud, temporal, fusion, and dual-head model modules
-scripts/      Training, evaluation, inspection, and stats commands
-```
-
-The older internal pipeline is retained under `legacy/` for maintainer review. New public users should start with `scripts/train.py`, `scripts/eval.py`, `has_dataset/`, and `models/`.
-
 ## Citation
 
 ```text
