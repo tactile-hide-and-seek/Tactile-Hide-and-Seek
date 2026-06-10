@@ -4,7 +4,7 @@ The public Hugging Face dataset is loaded as:
 
 ```python
 from datasets import load_dataset
-dataset = load_dataset("StanFu/Hide-and-Seek-v1")
+dataset = load_dataset("TUM-ICS/Hide-and-Seek")
 ```
 
 Expected fields per frame:

@@ -6,7 +6,7 @@ from typing import Optional
 
 from datasets import Array2D, Dataset, DatasetDict, Features, Sequence, Value, load_dataset
 
-DEFAULT_DATASET_NAME = "StanFu/Hide-and-Seek-v1"
+DEFAULT_DATASET_NAME = "TUM-ICS/Hide-and-Seek"
 
 DATASET_FEATURES = Features(
     {

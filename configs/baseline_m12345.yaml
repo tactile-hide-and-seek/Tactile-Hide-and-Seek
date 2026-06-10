@@ -1,5 +1,5 @@
 dataset:
-  name: StanFu/Hide-and-Seek-v1
+  name: TUM-ICS/Hide-and-Seek
   window_length: 100
   stride: 40
   batch_size: 32

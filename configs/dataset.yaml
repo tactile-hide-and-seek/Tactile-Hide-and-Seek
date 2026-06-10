@@ -1,5 +1,5 @@
 dataset:
-  name: StanFu/Hide-and-Seek-v1
+  name: TUM-ICS/Hide-and-Seek
   train_split: train
   validation_split: validation
   test_split: test

@@ -8,7 +8,7 @@ This repository provides a minimal public release for loading the Hugging Face d
 
 ## Links
 
-- Dataset: https://huggingface.co/datasets/StanFu/Hide-and-Seek-v1
+- Dataset: https://huggingface.co/datasets/TUM-ICS/Hide-and-Seek
 - Project page: [tactile-hide-and-seek](https://tactile-hide-and-seek.github.io/)
 - Paper: (Coming soon)
 
@@ -26,7 +26,7 @@ The baseline trains on temporal windows with default `window_length=100` and `st
 ```python
 from datasets import load_dataset
 
-dataset = load_dataset("StanFu/Hide-and-Seek-v1")
+dataset = load_dataset("TUM-ICS/Hide-and-Seek")
 ```
 
 ## Installation
