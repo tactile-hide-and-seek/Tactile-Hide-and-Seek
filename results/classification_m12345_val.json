@@ -1,0 +1,9 @@
+{
+  "split": "validation",
+  "checkpoint": "checkpoints/m12345/best_model.pt",
+  "windows": 3888,
+  "object_accuracy": 0.9382716049382716,
+  "weight_accuracy": 0.885545267489712,
+  "joint_accuracy": 0.856224279835391,
+  "joint_macro_f1": 0.8548086097517372
+}

@@ -4,30 +4,14 @@ Official offline baseline code for the ICRA 2026 paper:
 
 **Tactile Hide and Seek: Bimanual Object Blind Search and Retrieval Via Tactile-Only Feedback**
 
-This repository provides a minimal public release for loading the Hugging Face dataset, creating temporal windows, training a readable PyTorch dual-head baseline, and evaluating checkpoints. 
+This repository provides a minimal public release for loading the Hugging Face dataset, creating temporal windows, training a PyTorch dual-head baseline, and evaluating checkpoints.
 
 ## Links
 
 - Dataset: https://huggingface.co/datasets/TUM-ICS/Hide-and-Seek
+- Pretrained checkpoints: https://huggingface.co/TUM-ICS/HAS-Bench-baselines
 - Project page: [tactile-hide-and-seek](https://tactile-hide-and-seek.github.io/)
 - Paper: (Coming soon)
-
-## Dataset
-
-The dataset is frame-wise and contains:
-
-- train: 777,169 examples
-- validation: 221,195 examples
-- test: 121,752 examples
-- total: 1,120,116 frame-wise tactile examples
-
-The baseline trains on temporal windows with default `window_length=100` and `stride=40`. Windows are grouped by `episode_index` and never cross episode boundaries.
-
-```python
-from datasets import load_dataset
-
-dataset = load_dataset("TUM-ICS/Hide-and-Seek")
-```
 
 ## Installation
 
@@ -37,83 +21,44 @@ conda activate thas
 pip install -e ".[dev]"
 ```
 
-On Linux or macOS, use `source activate thas` instead of the Windows activation command.
+## Dataset
 
+```python
+from datasets import load_dataset
+
+dataset = load_dataset("TUM-ICS/Hide-and-Seek")
+```
+
+The dataset is frame-wise with fixed train/validation/test splits. The baseline trains on temporal windows (`window_length=100`, `stride=40`) grouped by `episode_index`; windows never cross episode boundaries.
 
 ## Training
 
-Full M1-M5 baseline:
-
 ```bash
 python scripts/train.py --config configs/baseline_m12345.yaml --output_dir checkpoints/m12345
+python scripts/train.py --config configs/baseline_m123.yaml   --output_dir checkpoints/m123
 ```
 
-M1-M3 baseline:
-
-```bash
-python scripts/train.py --config configs/baseline_m123.yaml --output_dir checkpoints/m123
-```
-
-You can also choose modalities directly:
-
-```bash
-python scripts/train.py --modalities M23 --batch_size 32 --learning_rate 1e-4 --epochs 20
-```
+Modalities can also be selected directly, e.g. `python scripts/train.py --modalities M23`.
 
 ## Evaluation
 
-```bash
-python scripts/eval.py --checkpoint checkpoints/m12345/best_model.pt --split test
-```
-
-Optional object confusion matrix export:
+Download the pretrained checkpoints (or reproduce them with the training commands above):
 
 ```bash
-python scripts/eval.py --checkpoint checkpoints/m12345/best_model.pt --split test --confusion_matrix outputs/object_confusion.csv
+hf download TUM-ICS/HAS-Bench-baselines --local-dir checkpoints
 ```
 
-> Trained checkpoints are not shipped with this release. The `checkpoints/` directory is created locally when you run `scripts/train.py` with `--output_dir`. Re-run the training commands above to reproduce the weights and `last_metrics.json` files referenced below.
+```bash
+python scripts/eval.py           --checkpoint checkpoints/m12345/best_model.pt --split test
+python scripts/eval_retrieval.py --checkpoint checkpoints/m12345/best_model.pt --split test --hard_negatives
+python scripts/eval_early.py     --checkpoint checkpoints/m12345/best_model.pt --split test
+```
 
-## Results
-
-The table below reports validation-set accuracy (%) for the two reference configurations in this public release, alongside the corresponding rows from Table I of the paper.
-
-The public pipeline is a cleaned-up release version of the internal training code used for the paper. Due to post-submission implementation updates, including differences in data loading, normalization, and training configuration, the released pipeline may produce results that differ from the published numbers.
-
-| Modalities | Source        | Object Acc | Weight Acc | Joint Acc |
-| ---------- | ------------- | ---------- | ---------- | --------- |
-| M123       | Paper Table I | 90.8       | 83.2       | 79.0      |
-| M123       | This release  | **93.47**  | **87.50**  | **84.62** |
-| M12345     | Paper Table I | 91.1       | 83.1       | 79.6      |
-| M12345     | This release  | **93.83**  | **88.55**  | **85.62** |
-
-Release numbers were produced by `scripts/train.py` with `configs/baseline_m123.yaml` and `configs/baseline_m12345.yaml` using the default seed, and read from `checkpoints/<run>/last_metrics.json` after training.
-
-The trained checkpoints and generated `last_metrics.json` files are not included in this repository. To reproduce these release numbers, please re-run the corresponding training commands.
-
-Your own runs may differ slightly depending on hardware, PyTorch/CUDA versions, random seed behavior, and Hugging Face dataset cache state.
+All evaluation scripts fix the random seed (`--seed`, default 42) and can write machine-readable summaries with `--results_json`. Reference outputs are provided under [`results/`](results/).
 
 ## Labels
 
-`data/label_mapping.json` and `data/label_mapping.yaml` contain:
-
-- `classification_labels`: 61 object-weight labels, including `negative`
-- `object_labels`: 34 object labels, including `negative`
-- `weight_labels`: 4 labels: `none`, `light`, `medium`, `heavy`
-
-Examples:
-
-- `negative -> object=negative, weight=none`
-- `bag_medium -> object=bag, weight=medium`
-- `tomatosoup_light -> object=tomatosoup, weight=light`
-
-The training loss is:
-
-```text
-object_cross_entropy + 0.5 * weight_cross_entropy
-```
-
-Metrics are object accuracy, weight accuracy, and joint accuracy.
+`data/label_mapping.json` and `data/label_mapping.yaml` map the 61 object-weight labels to 34 object labels and 4 weight labels (`none`, `light`, `medium`, `heavy`), e.g. `bag_medium -> object=bag, weight=medium`.
 
 ## Citation
 

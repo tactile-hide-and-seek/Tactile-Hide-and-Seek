@@ -1,0 +1,25 @@
+{
+  "split": "test",
+  "checkpoint": "checkpoints/m12345/best_model.pt",
+  "windows": 2154,
+  "object_accuracy": 0.9368616527390901,
+  "weight_accuracy": 0.8871866295264624,
+  "joint_accuracy": 0.8546889507892294,
+  "joint_macro_f1": 0.852578523599454,
+  "per_mode": {
+    "push": {
+      "windows": 1685,
+      "episodes": 429,
+      "object_accuracy": 0.9608308605341246,
+      "weight_accuracy": 0.9192878338278931,
+      "joint_accuracy": 0.9020771513353115
+    },
+    "grasp": {
+      "windows": 469,
+      "episodes": 34,
+      "object_accuracy": 0.8507462686567164,
+      "weight_accuracy": 0.7718550106609808,
+      "joint_accuracy": 0.6844349680170576
+    }
+  }
+}

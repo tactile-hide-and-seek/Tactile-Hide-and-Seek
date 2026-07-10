@@ -205,7 +205,6 @@ wandb/
 tensorboard_logs/
 lightning_logs/
 checkpoints/
-results/
 experiments/
 
 # Large files
@@ -257,3 +256,11 @@ local_config.yaml
 debug_local.yaml
 
 tmp/
+SARA HAS-Bench/
+outputs/
+
+# Ignore results/ contents except the official HAS-Bench baseline outputs
+# (the Section 4 tables regenerate from these JSON/CSV files).
+results/*
+!results/*.json
+!results/*.csv

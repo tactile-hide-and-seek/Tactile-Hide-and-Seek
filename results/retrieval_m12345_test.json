@@ -1,0 +1,20 @@
+{
+  "split": "test",
+  "checkpoint": "checkpoints/m12345/best_model.pt",
+  "mode": "full_window",
+  "negatives": "all",
+  "num_targets": 60,
+  "num_windows": 2154,
+  "num_pairs": 129240,
+  "num_positive_pairs": 2091,
+  "auroc": 0.9954706622530723,
+  "average_precision": 0.9264407741893853,
+  "f1_at_0.5": 0.8595408541100963,
+  "mrr": 1.0,
+  "median_first_rank": 1.0,
+  "fpr_at_0.5": {
+    "same_object_diff_weight": 0.05512393636699963,
+    "no_object": 0.0005291005291005291,
+    "overall_negative": 0.001722388693579973
+  }
+}

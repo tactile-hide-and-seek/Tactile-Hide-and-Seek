@@ -1,0 +1,50 @@
+{
+  "split": "test",
+  "checkpoint": "checkpoints/m123/best_model.pt",
+  "confidence_delta": 0.9,
+  "curve": [
+    {
+      "tau_frames": 25,
+      "tau_seconds": 0.25,
+      "num_episodes": 463,
+      "object_acc": 0.4708423326133909,
+      "weight_acc": 0.509719222462203,
+      "joint_acc": 0.3347732181425486
+    },
+    {
+      "tau_frames": 50,
+      "tau_seconds": 0.5,
+      "num_episodes": 463,
+      "object_acc": 0.49676025917926564,
+      "weight_acc": 0.5442764578833693,
+      "joint_acc": 0.34989200863930886
+    },
+    {
+      "tau_frames": 100,
+      "tau_seconds": 1.0,
+      "num_episodes": 463,
+      "object_acc": 0.8704103671706264,
+      "weight_acc": 0.7796976241900648,
+      "joint_acc": 0.7257019438444925
+    },
+    {
+      "tau_frames": 200,
+      "tau_seconds": 2.0,
+      "num_episodes": 463,
+      "object_acc": 0.8617710583153347,
+      "weight_acc": 0.8250539956803455,
+      "joint_acc": 0.755939524838013
+    }
+  ],
+  "auc_tau_normalized": 0.6258870718913917,
+  "num_common_episodes": 463,
+  "time_to_correct": {
+    "fraction_ever_stable": 0.755939524838013,
+    "mean_seconds_stable": 0.9842857142857143
+  },
+  "time_to_confidence": {
+    "fraction_confident": 0.796976241900648,
+    "mean_seconds_confident": 0.7723577235772358,
+    "accuracy_at_confidence": 0.6856368563685636
+  }
+}
