@@ -1,17 +1,34 @@
-# Tactile Hide and Seek Baselines
+<div align="center">
 
-Official offline baseline code for the ICRA 2026 paper:
+<img src="assets/title.svg" alt="Tactile Hide and Seek" width="600">
 
-**Tactile Hide and Seek: Bimanual Object Blind Search and Retrieval Via Tactile-Only Feedback**
+<h3>Bimanual Object Blind Search and Retrieval via Tactile-Only Feedback</h3>
+
+[![Paper](https://img.shields.io/badge/Paper-IEEE%20ICRA%202026-00629B)](https://ieeexplore.ieee.org/abstract/document/11696735)
+[![Project Page](https://img.shields.io/badge/Project-Page-2ea44f)](https://tactile-hide-and-seek.github.io/)
+[![Dataset](https://img.shields.io/badge/%F0%9F%A4%97%20Dataset-Hide--and--Seek-yellow)](https://huggingface.co/datasets/TUM-ICS/Hide-and-Seek)
+[![Checkpoints](https://img.shields.io/badge/%F0%9F%A4%97%20Checkpoints-HAS--Bench--baselines-orange)](https://huggingface.co/TUM-ICS/HAS-Bench-baselines)
+
+<img src="assets/story.png" alt="Human blind search and tactile-only bimanual robot retrieval" width="85%">
+
+<em>From human blind search to tactile-only bimanual robot retrieval.</em>
+
+</div>
 
 This repository provides a minimal public release for loading the Hugging Face dataset, creating temporal windows, training a PyTorch dual-head baseline, and evaluating checkpoints.
+
+<p align="center">
+  <img src="assets/framework_overview.png" alt="Tactile Hide-and-Seek framework overview" width="100%">
+  <br>
+  <em>Overview of the Tactile Hide-and-Seek framework.</em>
+</p>
 
 ## Links
 
 - Dataset: https://huggingface.co/datasets/TUM-ICS/Hide-and-Seek
 - Pretrained checkpoints: https://huggingface.co/TUM-ICS/HAS-Bench-baselines
 - Project page: [tactile-hide-and-seek](https://tactile-hide-and-seek.github.io/)
-- Paper: (Coming soon)
+- Paper: [IEEE Xplore](https://ieeexplore.ieee.org/abstract/document/11696735)
 
 ## Installation
 
@@ -62,14 +79,17 @@ All evaluation scripts fix the random seed (`--seed`, default 42) and can write 
 
 ## Citation
 
-```text
+```bibtex
 @inproceedings{fu2026tactilehideandseek,
-  title     = {Tactile Hide and Seek: Bimanual Object Blind Search and Retrieval Via Tactile-Only Feedback},
+  title     = {Tactile Hide and Seek: Bimanual Object Blind Search and Retrieval via Tactile-Only Feedback},
   author    = {Fu, Xiangyu and Xing, Hao and Armleder, Simon and Shen, Wenlan and Wang, Fengyi and Guadarrama-Olvera, Julio Rogelio and Cheng, Gordon},
-  booktitle = {IEEE International Conference on Robotics and Automation (ICRA)},
-  year      = {2026}
+  booktitle = {2026 IEEE International Conference on Robotics and Automation (ICRA)},
+  year      = {2026},
+  pages     = {21617-21624},
+  doi       = {10.1109/ICRA57385.2026.11696735}
 }
 ```
 
 ## Contact
-[Xiangyu Fu](mailto:xiangyu.fu@example.com)
+
+[Xiangyu Fu](mailto:xiangyu.fu@tum.de)
